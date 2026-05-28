@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charles London — Modern CV</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --soft: #f5f7fb;
+      --paper: #ffffff;
+      --line: #d9e0ea;
+      --accent: #0f766e;
+      --accent-dark: #134e4a;
+      --accent-soft: #e6f5f3;
+      --sidebar: #0f172a;
+      --sidebar-text: #e5edf7;
+      --sidebar-muted: #a9b6c8;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #e9edf4;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(233, 237, 244, 0.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .toolbar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: var(--sidebar);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toolbar span {
+      align-self: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 28px auto;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 72mm 1fr;
+      box-shadow: var(--shadow);
+    }
+
+    aside {
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      padding: 28px 24px;
+    }
+
+    main {
+      padding: 30px 34px 34px;
+    }
+
+    .name-block {
+      margin-bottom: 26px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 34px;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    .role {
+      margin: 14px 0 0;
+      color: var(--sidebar-muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--accent-dark);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    aside h2 {
+      color: #ffffff;
+      border-top: 1px solid rgba(255,255,255,0.16);
+      padding-top: 20px;
+      margin-top: 22px;
+    }
+
+    .contact, .side-list, .tool-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact li {
+      margin-bottom: 11px;
+      font-size: 12.5px;
+      color: var(--sidebar-muted);
+      overflow-wrap: anywhere;
+    }
+
+    .contact strong {
+      display: block;
+      color: var(--sidebar-text);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 2px;
+    }
+
+    .side-list li {
+      margin-bottom: 8px;
+      padding-left: 13px;
+      position: relative;
+      color: var(--sidebar-muted);
+      font-size: 12.8px;
+    }
+
+    .side-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tool-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tool-list li {
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 999px;
+      padding: 5px 8px;
+      color: var(--sidebar-muted);
+      font-size: 11.5px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .summary {
+      margin: 0 0 22px;
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: var(--accent-soft);
+      color: #173b37;
+      font-size: 15px;
+      font-weight: 550;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .job {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 19px;
+      border-left: 2px solid var(--line);
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px #fff;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.015em;
+    }
+
+    .dates {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .company {
+      margin: 0 0 7px;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .company-note {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12.8px;
+    }
+
+    ul.bullets {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 13.3px;
+    }
+
+    ul.bullets li {
+      margin-bottom: 5px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: #fbfcfe;
+    }
+
+    .card h3 {
+      margin-bottom: 6px;
+      font-size: 13.5px;
+      color: var(--accent-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.7px;
+    }
+
+    .note {
+      margin-top: 20px;
+      padding: 12px 14px;
+      border: 1px dashed #b7c3d4;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      background: #fafbfe;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        grid-template-columns: 1fr;
+      }
+      aside, main { padding: 24px; }
+      .job-header { display: block; }
+      .dates { display: block; margin-top: 3px; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 0; }
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+      aside { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .summary, .card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .job { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+    <span>Draft modern CV layout based on the 2020 PDF extraction</span>
+  </div>
+
+  <article class="page" aria-label="Charles London CV">
+    <aside>
+      <div class="name-block">
+        <p class="eyebrow">Cyber Security</p>
+        <h1>Charles<br>London</h1>
+        <p class="role">Senior Security Analyst · Automation · SIEM · Incident Response</p>
+      </div>
+
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><strong>Mobile</strong>07973 502135</li>
+        <li><strong>Email</strong>charles.london@talk21.com</li>
+        <li><strong>Location</strong>Watford, UK</li>
+      </ul>
+
+      <h2>Core strengths</h2>
+      <ul class="side-list">
+        <li>Security operations and incident response</li>
+        <li>SIEM monitoring, triage and analysis</li>
+        <li>IT security risk and governance</li>
+        <li>Security automation with Python and PowerShell</li>
+        <li>Reporting, visualisation and event intelligence</li>
+        <li>Cloud application security</li>
+      </ul>
+
+      <h2>Specialisations</h2>
+      <ul class="side-list">
+        <li>IDS / IPS</li>
+        <li>Firewall management</li>
+        <li>Log analysis</li>
+        <li>Security API integration</li>
+        <li>ServiceNow workflows</li>
+        <li>Technical writing and tutoring</li>
+      </ul>
+
+      <h2>Tools & platforms</h2>
+      <ul class="tool-list">
+        <li>Microsoft Defender</li>
+        <li>Splunk</li>
+        <li>Hermes AI</li>
+        <li>ServiceNow Security Operations</li>
+        <li>Rapid7 SIEM</li>
+        <li>ArcSight</li>
+        <li>RSA enVision</li>
+        <li>Snort</li>
+        <li>AlienVault</li>
+        <li>Trend Micro</li>
+        <li>Symantec CSP</li>
+        <li>LogLogic</li>
+        <li>ISS RealSecure</li>
+        <li>Python</li>
+        <li>PowerShell</li>
+      </ul>
+    </aside>
+
+    <main>
+      <p class="summary">
+        Cyber security analyst focused on security operations, automation and incident response. Experienced in SIEM monitoring, event correlation, risk and governance, and building practical automation to improve security response and remediation.
+      </p>
+
+      <section class="section">
+        <h2>Professional experience</h2>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>Senior Security Analyst</h3>
+            <span class="dates">Jul 2019 — Present</span>
+          </div>
+          <p class="company">easyJet PLC</p>
+          <p class="company-note">European airline and holidays business.</p>
+          <ul class="bullets">
+            <li>Monitor, triage and analyse SIEM alerts and incident tickets across IT operations security, using Microsoft Defender and Splunk for security alerting and investigation.</li>
+            <li>Contribute to incident response, on-call support and incident management processes.</li>
+            <li>Report on security events and create intelligence to support tuning and response improvements.</li>
+            <li>Support IT security risk, governance and operational security activities.</li>
+            <li>Develop and improve security incident investigation and resolution workflows within the ServiceNow Security Operations module.</li>
+            <li>Build automation using Python, ServiceNow and PowerShell to improve remediation workflows.</li>
+            <li>Work with cloud application security controls and operational security tooling.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>Freelance Web Developer & DevOps Consultant</h3>
+            <span class="dates">2018 — Jul 2019</span>
+          </div>
+          <p class="company">New Web Sites Limited</p>
+          <ul class="bullets">
+            <li>Managed websites for small businesses, including hosting, maintenance and operational support.</li>
+            <li>Supported marketing campaign hosting and tracking using Mautic and Tracking202.</li>
+            <li>Delivered DevOps support across WordPress, PHP, JavaScript and NPM-based workflows.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>Cyber Security Engineer</h3>
+            <span class="dates">Nov 2016 — Jul 2018</span>
+          </div>
+          <p class="company">Smiths Group PLC</p>
+          <p class="company-note">Global engineering and medical technology group.</p>
+          <ul class="bullets">
+            <li>Provided Level 3 IT security support across enterprise security operations.</li>
+            <li>Supported implementation and operational use of security tools including Rapid7 SIEM and Trend Micro enterprise security suite.</li>
+            <li>Participated in change approvals scrutiny and high-level design review boards.</li>
+            <li>Worked with security tooling, event logging and operational risk processes across a complex global environment.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <h3>Lead Security Analyst</h3>
+            <span class="dates">Mar 2015 — Sept 2020</span>
+          </div>
+          <p class="company">T-Systems / EE</p>
+          <ul class="bullets">
+            <li>Worked on RSA enVision, enabling log feeds from PCI environments, critical servers and key network segments.</li>
+            <li>Provided IT-related security alerts and event visibility for SOC analysts to investigate.</li>
+            <li>Trained compliance teams to understand which RSA enVision alerts could affect PCI integrity and required SOC investigation.</li>
+            <li>Progressed from contract to permanent employment during the five-year engagement, with approximately 60% contract and 40% permanent tenure.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Security capability summary</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Security operations</h3>
+            <p>SIEM monitoring, incident ticket triage, event correlation, reporting and operational response.</p>
+          </div>
+          <div class="card">
+            <h3>Automation</h3>
+            <p>Python, PowerShell and ServiceNow workflow automation for response and remediation.</p>
+          </div>
+          <div class="card">
+            <h3>Infrastructure security</h3>
+            <p>IDS/IPS, firewall management, log analysis and endpoint/server protection tools.</p>
+          </div>
+          <div class="card">
+            <h3>Cloud & governance</h3>
+            <p>Cloud application security, IT risk, governance and control-focused operational security.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </article>
+</body>
+</html>
